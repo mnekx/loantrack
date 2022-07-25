@@ -21,7 +21,6 @@ const LoansComponent = () => {
       <h2>Loans</h2>
       <div>
         {loans?loans.length === 0?<p>No loans yet!</p>:<ul className={`${styles.Ul}`}>
-          {console.log(loans)}
           {loans?.map((loan) => {
             const strDate = new Date(loan.startdate);
             const endDate = new Date(loan.enddate);
@@ -29,6 +28,7 @@ const LoansComponent = () => {
               <li
                 className={`${styles.Li} ${stylesUtilities.DFlex}`}
                 onClick={() => handleLoanClicked(loan._id)}
+                key={loan._id}
               >
                 <Link
                   to={
