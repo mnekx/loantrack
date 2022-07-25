@@ -26,27 +26,6 @@ const NewLoan = () => {
         setCreatedLoan(result)
       });
   };
-  // const createdMdhaminiDiv = (
-  //   <div>
-  //     <p>
-  //       Fullname:&nbsp;
-  //       <span>
-  //         <b>{createdMdhamini?.firstName + ' ' + createdMdhamini?.lastName}</b>
-  //       </span>
-  //     </p>
-  //     <p>
-  //       Phone Number:{' '}
-  //       <span>
-  //         <b>{createdMdhamini?.phone}</b>
-  //       </span>
-  //     </p>
-  //     <img
-  //       src={'http://localhost:3001/pics/' + createdMdhamini?.image}
-  //       alt='customer'
-  //       className={`${styles.Img}`}
-  //     />
-  //   </div>
-  // );
   return (
     <section className={`${styles.Section} ${styleUtilities.Section}`}>
       <h2>New Loan</h2>
