@@ -1,0 +1,37 @@
+.Label {
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+.Input {
+    width: 50%;
+}
+
+.Section {
+    position: static;
+    left: 0;
+    top: 10%;
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+}
+
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Btn:hover {
+    cursor: pointer;
+}
+
+.Pic {
+    padding-left: 0px;
+}
+
+.Img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
