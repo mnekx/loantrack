@@ -1,0 +1,14 @@
+.Container {
+    width: 20rem;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-end;
+    align-content: flex-end;
+    align-self: flex-end;
+    padding-right: 1rem;
+}
+
+.UserPic {
+    align-self: flex-end;
+    margin-right: -1.8%;
+}
