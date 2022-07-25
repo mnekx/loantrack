@@ -11,7 +11,6 @@ const RepaymentsComponent = () => {
     fetch('/api/loans/' + loanId + '/repayments')
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setData(data);
       });
   });
