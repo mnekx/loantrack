@@ -1,0 +1,41 @@
+.Section {
+    left: 10%;
+    width: 80%;
+    position: static;
+}
+
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Ul {
+    width: 100%;
+    box-shadow:-0em 0 1.4em 0rem black;
+}
+
+.Li {
+    height: 2rem;
+    padding: 0 1rem;
+    background-color: white;
+    align-items: center;
+}
+ .Li > a {
+    text-decoration: none;
+    color: white;
+ }
+
+.Li:nth-of-type(even) {
+    background-color: darkgray;
+    color: white;
+}
+
+.Li:nth-of-type(odd) > a{
+    color: teal;
+}
+
+.Li:hover {
+    background-color: black;
+    cursor: pointer;
+}
