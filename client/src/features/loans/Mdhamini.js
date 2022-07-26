@@ -61,6 +61,7 @@ const Mdhamini = (props) => {
           id='first-name'
           placeholder='First Name'
           className={`${styles.Input} ${styleUtilities.Input}`}
+          required
         />
       </label>
       <label
@@ -74,6 +75,7 @@ const Mdhamini = (props) => {
           id='last-name'
           placeholder='Last Name'
           className={`${styles.Input} ${styleUtilities.Input}`}
+          required
         />
       </label>
       <label
@@ -87,6 +89,7 @@ const Mdhamini = (props) => {
           id='birth-date'
           placeholder='Birth date'
           className={`${styles.Input} ${styleUtilities.Input}`}
+          required
         />
       </label>
       <label
@@ -114,6 +117,7 @@ const Mdhamini = (props) => {
           name='residence'
           placeholder='Last Name'
           className={`${styles.Input} ${styleUtilities.Input}`}
+          required
         />
       </label>
       <label
@@ -126,6 +130,7 @@ const Mdhamini = (props) => {
           id='pic'
           name='pic'
           className={`${styles.Input} ${styles.Pic} ${styleUtilities.Input}`}
+          required
         />
       </label>
 
