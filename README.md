@@ -1,5 +1,7 @@
 # Loantrack
 
+## Screenshot ![screenshot](./screenshot.png)
+
 > Webapp that tracks small monthly loans paid daily.
 
 ## Built With
