@@ -47,6 +47,7 @@ const NewLoan = () => {
               id='loan-amt'
               name='amount'
               className={`${styles.Input} ${styleUtilities.Input}`}
+              required
             />
           </label>
           <label
@@ -60,6 +61,7 @@ const NewLoan = () => {
               placeholder='Start date'
               name='startdate'
               className={`${styles.Input} ${styleUtilities.Input}`}
+              required
             />
           </label>
           <label
@@ -73,6 +75,7 @@ const NewLoan = () => {
               placeholder='End date'
               name='enddate'
               className={`${styles.Input} ${styleUtilities.Input}`}
+              required
             />
           </label>
           <button
