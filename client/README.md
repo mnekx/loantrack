@@ -1,5 +1,3 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
-
 # loantrack
 
 > Webapp that tracks monthly loans paid daily.
