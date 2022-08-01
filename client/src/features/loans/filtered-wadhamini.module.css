@@ -1,0 +1,14 @@
+.Img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+.Ul {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20rem;
+    overflow-x: scroll;
+    max-height: 10rem;
+}
