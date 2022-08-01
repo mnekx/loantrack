@@ -1,29 +1,48 @@
 import styleUtilities from '../../utility.module.css';
 import styles from './mdhamini.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
+import lib from '../../server-comm/lib';
+import FilteredWadhamini from "./FilteredWadhamini";
 
 const Mdhamini = (props) => {
   const [loading, setLoading] = useState(false);
   const [createdUser, setCreatedUser] = useState(null);
+  const [allCustomers, setAllCustomers] = useState([])
+  const [filteredList, setFilteredList] = useState([]);
+  useEffect(() => {
+    lib.fetch('/api/customers', 'GET', null, (resultObj) => {
+      if (resultObj.data) {
+        console.log(resultObj)
+        setAllCustomers(resultObj.data)
+      } else {
+        console.log(resultObj.error)
+      }
+    })
+  }, [])
   const onSubmitData = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     setLoading(true);
-    fetch('/api/customers', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((result) => {
+    lib.fetch('/api/customers', 'POST', formData, (resultObj) => {
+      if (resultObj.data) {
         setLoading(false);
-        setCreatedUser({ ...result.data });
-        props.onMoveMdhamini({ ...result.data });
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+        setCreatedUser({ ...resultObj.data.data });
+        props.onMoveMdhamini({ ...resultObj.data.data });
+      } else {
+        console.error('Error:', resultObj.error);
+      }
+    });
   };
+  const handleOnSearch = (e) => {
+    const field = e.target.name;
+    const re = new RegExp(`${e.target.value}`, 'img');
+    const newFilteredList = allCustomers.filter(customer => {
+      return customer[field].match(re) !== null
+    })
+    console.log(newFilteredList)
+    setFilteredList(newFilteredList)
+  }
   const createdUserDiv = (
     <div>
       <p>
@@ -48,7 +67,7 @@ const Mdhamini = (props) => {
   const userCreationForm = (
     <form
       onSubmit={(e) => onSubmitData(e)}
-      className={`${styleUtilities.CenterContainer} ${styleUtilities.DFlex} ${styleUtilities.FlexDirCol} ${styleUtilities.AlignItemsStart}`}
+      className={`${styleUtilities.CenterContainer} ${`styles.Form`} ${styleUtilities.DFlex} ${styleUtilities.FlexDirCol} ${styleUtilities.AlignItemsStart}`}
     >
       <label
         htmlFor='first-name'
@@ -62,6 +81,7 @@ const Mdhamini = (props) => {
           placeholder='First Name'
           className={`${styles.Input} ${styleUtilities.Input}`}
           required
+          onChange={(e) => handleOnSearch(e)}
         />
       </label>
       <label
@@ -76,6 +96,7 @@ const Mdhamini = (props) => {
           placeholder='Last Name'
           className={`${styles.Input} ${styleUtilities.Input}`}
           required
+          onChange={(e) => handleOnSearch(e)}
         />
       </label>
       <label
@@ -104,6 +125,7 @@ const Mdhamini = (props) => {
           pattern='0[6,7][1-9][1-9]-[0-9]{6}'
           required
           className={`${styles.Input} ${styleUtilities.Input}`}
+          onChange={(e) => handleOnSearch(e)}
         />
       </label>
       <label
@@ -145,8 +167,9 @@ const Mdhamini = (props) => {
     <section className={`${styleUtilities.Section} ${styles.Section}`}>
       <h3>Mdhamini</h3>
       {loading ? loadingP : createdUser ? createdUserDiv : userCreationForm}
+      {filteredList.length > 0 && <FilteredWadhamini filteredList={filteredList}/>}
     </section>
   );
 };
 
-export default Mdhamini
+export default Mdhamini;
