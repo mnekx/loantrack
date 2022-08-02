@@ -3,23 +3,26 @@ import styles from './mdhamini.module.css';
 import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import lib from '../../server-comm/lib';
-import FilteredWadhamini from "./FilteredWadhamini";
+import FilteredWadhamini from './FilteredWadhamini';
 
 const Mdhamini = (props) => {
   const [loading, setLoading] = useState(false);
   const [createdUser, setCreatedUser] = useState(null);
-  const [allCustomers, setAllCustomers] = useState([])
+  const [allCustomers, setAllCustomers] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
+  const [filteredListYPos, setFilteredListYPos] = useState(0);
   useEffect(() => {
     lib.fetch('/api/customers', 'GET', null, (resultObj) => {
       if (resultObj.data) {
-        console.log(resultObj)
-        setAllCustomers(resultObj.data)
+        setAllCustomers(resultObj.data);
       } else {
-        console.log(resultObj.error)
+        console.log(resultObj.error);
       }
-    })
-  }, [])
+    });
+  }, []);
+  useEffect(() => {
+    setFilteredList([]);
+  }, [createdUser]);
   const onSubmitData = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -36,13 +39,27 @@ const Mdhamini = (props) => {
   };
   const handleOnSearch = (e) => {
     const field = e.target.name;
+
     const re = new RegExp(`${e.target.value}`, 'img');
-    const newFilteredList = allCustomers.filter(customer => {
-      return customer[field].match(re) !== null
-    })
-    console.log(newFilteredList)
-    setFilteredList(newFilteredList)
-  }
+    const newFilteredList =
+      e.target.value === ''
+        ? []
+        : allCustomers.filter((customer) => {
+            return customer[field].match(re) !== null;
+          });
+    setFilteredList(newFilteredList);
+  };
+
+  const handleSearchableInputClick = (e) => {
+    setFilteredListYPos(e.clientY);
+  };
+  const moveData = (mdhamini) => {
+    // setMdhaminiSelected(true)
+    const selectedMdhamini = filteredList.filter(
+      (customer) => customer._id === mdhamini
+    )[0];
+    setCreatedUser(selectedMdhamini);
+  };
   const createdUserDiv = (
     <div>
       <p>
@@ -67,7 +84,9 @@ const Mdhamini = (props) => {
   const userCreationForm = (
     <form
       onSubmit={(e) => onSubmitData(e)}
-      className={`${styleUtilities.CenterContainer} ${`styles.Form`} ${styleUtilities.DFlex} ${styleUtilities.FlexDirCol} ${styleUtilities.AlignItemsStart}`}
+      className={`${styleUtilities.CenterContainer} ${`styles.Form`} ${
+        styleUtilities.DFlex
+      } ${styleUtilities.FlexDirCol} ${styleUtilities.AlignItemsStart}`}
     >
       <label
         htmlFor='first-name'
@@ -82,6 +101,7 @@ const Mdhamini = (props) => {
           className={`${styles.Input} ${styleUtilities.Input}`}
           required
           onChange={(e) => handleOnSearch(e)}
+          onClick={(e) => handleSearchableInputClick(e)}
         />
       </label>
       <label
@@ -97,6 +117,7 @@ const Mdhamini = (props) => {
           className={`${styles.Input} ${styleUtilities.Input}`}
           required
           onChange={(e) => handleOnSearch(e)}
+          onClick={(e) => handleSearchableInputClick(e)}
         />
       </label>
       <label
@@ -126,6 +147,7 @@ const Mdhamini = (props) => {
           required
           className={`${styles.Input} ${styleUtilities.Input}`}
           onChange={(e) => handleOnSearch(e)}
+          onClick={(e) => handleSearchableInputClick(e)}
         />
       </label>
       <label
@@ -163,11 +185,19 @@ const Mdhamini = (props) => {
     </form>
   );
   const loadingP = <p>Loading...</p>;
+  let childKey = 1;
   return (
     <section className={`${styleUtilities.Section} ${styles.Section}`}>
       <h3>Mdhamini</h3>
       {loading ? loadingP : createdUser ? createdUserDiv : userCreationForm}
-      {filteredList.length > 0 && <FilteredWadhamini filteredList={filteredList}/>}
+      {filteredList.length > 0 && (
+        <FilteredWadhamini
+          key={++childKey}
+          filteredList={filteredList}
+          pos={filteredListYPos}
+          onClickExistingMdhamini={moveData}
+        />
+      )}
     </section>
   );
 };
