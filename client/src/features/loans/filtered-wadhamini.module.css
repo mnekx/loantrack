@@ -1,14 +1,30 @@
 .Img {
-    width: 4rem;
-    height: 4rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
+    justify-self: flex-end;
 }
 
 .Ul {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 20rem;
-    overflow-x: scroll;
+    left: 50%;
+    width: 40%;
+    overflow: auto;
     max-height: 10rem;
+    flex-direction: column;
+    background-color: white;
+}
+.Li {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Li:nth-of-type(odd) {
+    background-color: lightgray;
+}
+
+.Li:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
 }
