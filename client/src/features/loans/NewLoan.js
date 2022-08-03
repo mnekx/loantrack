@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 const NewLoan = () => {
   const [createdMdhamini, setCreatedMdhamini] = useState(null);
   const [createdloan, setCreatedLoan] = useState(null);
+  const [repayment, setRepayment] = useState(0);
   const params = useParams();
   const moveMdhamini = (mdhamini) => {
     setCreatedMdhamini(mdhamini);
@@ -26,6 +27,11 @@ const NewLoan = () => {
         setCreatedLoan(result)
       });
   };
+
+  const calculateRepayment = (e) => {
+    const repayment = Number(e.target.value) / 30
+    setRepayment(repayment)
+  }
   return (
     <section className={`${styles.Section} ${styleUtilities.Section}`}>
       <h2>New Loan</h2>
@@ -48,6 +54,7 @@ const NewLoan = () => {
               name='amount'
               className={`${styles.Input} ${styleUtilities.Input}`}
               required
+              onChange={calculateRepayment}
             />
           </label>
           <label
@@ -86,10 +93,10 @@ const NewLoan = () => {
           </button>
         </form>
         <p>
-          Daily Repayments: <b>{Number(2500).toLocaleString()}</b>
+          Daily Repayments: <b>{Number(repayment).toLocaleString()}</b>
         </p>
         <p>
-          For <b>{Number(30).toLocaleString()}</b> days.
+          For <b>30</b> days.
         </p>
       </div>}
     </section>
