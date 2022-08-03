@@ -14,7 +14,7 @@ const FilteredWadhamini = (props) => {
         <li
           key={customer._id}
           className={`${styleUtilities.DFlex} ${styles.Li}`}
-          onClick={() => props.onClickExistingMdhamini(customer._id)}
+          onClick={() => props.onClickExistingMdhamini(customer)}
         >
           {customer.firstName} {customer.lastName} - {customer.phone}{' '}
           <img
