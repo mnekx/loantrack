@@ -40,6 +40,7 @@ const LoansComponent = () => {
                   }
                 >
                   {strDate.toDateString()} --{'>'} {endDate.toDateString()}
+                  {' '}Repayment: {Number(loan.amount / 30).toLocaleString()}
                 </Link>
               </li>
             );
