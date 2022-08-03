@@ -54,11 +54,9 @@ const Mdhamini = (props) => {
     setFilteredListYPos(e.clientY);
   };
   const moveData = (mdhamini) => {
-    // setMdhaminiSelected(true)
-    const selectedMdhamini = filteredList.filter(
-      (customer) => customer._id === mdhamini
-    )[0];
-    setCreatedUser(selectedMdhamini);
+    props.onMoveMdhamini(mdhamini)
+    
+    setCreatedUser(mdhamini);
   };
   const createdUserDiv = (
     <div>
