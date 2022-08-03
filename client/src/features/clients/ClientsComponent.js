@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 const ClientsComponent = ({ opened }) => {
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [allClients, setAllClients] = useState([])
   useEffect(() => {
     setLoading(true)
     fetch('/api/customers', {
@@ -17,8 +18,9 @@ const ClientsComponent = ({ opened }) => {
       .then((result) => {
         setLoading(false)
         setClients(result);
+        setAllClients(result)
       });
-  }, [clients]);
+  }, []);
   const classname = opened ? styles.Opened : styles.Closed;
   const navigate = useNavigate();
   const Trs = clients.map((client) => {
@@ -40,6 +42,11 @@ const ClientsComponent = ({ opened }) => {
       </tr>
     );
   });
+  const handleSearch = (e) => {
+    const re = new RegExp(`${e.target.value}`, 'img');
+    const newFilteredList = allClients.filter(client => client.firstName.match(re) !== null)
+    setClients(newFilteredList)
+  }
   return (
     <section
       className={`${styleUtilities.Section} ${styles.Section} ${classname}`}
@@ -49,6 +56,7 @@ const ClientsComponent = ({ opened }) => {
           className={`${styleUtilities.Input} ${styles.Input}`}
           type='text'
           placeholder='Search'
+          onChange={handleSearch}
         />
         <button
           onClick={() => navigate('/new-client', { replace: false })}
@@ -67,7 +75,7 @@ const ClientsComponent = ({ opened }) => {
           </tr>
         </thead>
         <tbody className={`${styles.TBody}`}>
-        {Trs}
+        { loading? 'Loading...': Trs}
         </tbody>
       </table>
     </section>
