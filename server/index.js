@@ -35,6 +35,10 @@ app.get('/api', (req, res) => {
   res.json({ message: 'Hello from server!' });
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
+
 mongoose.connect(process.env.DB_CONN, () => console.log('connected to DB!'));
 
 app.listen(PORT, () => {
