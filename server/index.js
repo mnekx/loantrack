@@ -29,6 +29,8 @@ app.use('/api/customers', customerRoute);
 app.use('/api/repayments', repaymentsRoute);
 app.use('/api/loans', loansRoutes);
 
+app.use(express.static(path.resolve(__dirname, '../client/build')));
+
 app.get('/api', (req, res) => {
   res.json({ message: 'Hello from server!' });
 });
