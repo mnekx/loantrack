@@ -40,7 +40,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
-mongoose.connect("process.env.DB_CONN", () => console.log('connected to DB!'));
+mongoose.connect(process.env.DB_CONN, () => console.log('connected to DB!'));
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
