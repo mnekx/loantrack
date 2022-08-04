@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.AppLogo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.AppHeader {
+  align-items: center;
+}
+
+.AppLink {
+  color: #61dafb;
+}
+
+.Nav {
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+}
+
+.Wrapper {
+  max-width: 100%;
+  /* margin: 0 auto; */
+  margin-bottom: 3rem;
+}
+
+.Main {
+  gap: 1rem;
+}

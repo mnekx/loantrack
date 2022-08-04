@@ -1,0 +1,23 @@
+.Section {
+    left: 0;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    position: static;
+}
+
+.Label {
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+.Input {
+    width: 50%;
+}
+
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 13%;
+}

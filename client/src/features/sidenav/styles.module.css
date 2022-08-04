@@ -1,0 +1,46 @@
+.Container {
+    position: fixed;
+    top: 17.7%;
+    height: 83.3%;
+    width: 5%;
+    background-color: white;
+}
+
+.LinkButton {
+    padding: 0.5rem 0.3rem 0.3rem 0.1rem;
+    align-items: center;
+}
+
+.Ul {
+    z-index: 3;
+    position: fixed;
+    top: 18%;
+    width: 5%;
+    height: 100%;
+    background-color: white;
+}
+
+.Section {
+    top: 18.2%;
+    left: 6px;
+    width: 5%;
+    background-color: white;
+    z-index: 2;
+    position: fixed;
+    padding: 0;
+    margin: 0;
+}
+
+.RightCaret {
+    transform: rotateY(0deg);
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.LeftCaret {
+    transform: rotateY(180deg);
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

@@ -1,0 +1,18 @@
+.Section {
+    height: 15rem;
+    border: 1px solid gray;
+    left: 0;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    position: static;
+}
+
+.Label {
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+.Input {
+    width: 50%;
+}

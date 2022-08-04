@@ -1,0 +1,30 @@
+.Section {
+    top: 10%;
+    width: 90%;
+    height: 82vh;
+    overflow-y: scroll;
+    left: 10%;
+}
+
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 9%;
+}
+
+.Img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+
+.H2 {
+    justify-content: space-between;
+    width: 74%;
+
+}
+
+.P {
+    text-align: start;
+}
