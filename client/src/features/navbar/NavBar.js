@@ -6,10 +6,10 @@ import styles from './styles.module.css';
 const NavBar = () => {
   const [active, setActive] = useState(0);
   const navigate = useNavigate()
-  const buttons = ['Reports', 'Repayments'];
+  const buttons = ['']; // This was ment to to be dynamic for more than one button
   const handleClick = (i) => {
     setActive(i);
-    navigate(buttons[i]+'/')
+    navigate('/')
   };
   return (
     <div className={`${styleUtilities.DFlex} ${styles.Container}`}>
@@ -21,7 +21,7 @@ const NavBar = () => {
             onClick={() => handleClick(i)}
             key={i}
           >
-            {button}
+            Reports {/* since we have only one button else {button}*/}
           </button>
         );
       })}
