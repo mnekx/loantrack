@@ -4,7 +4,8 @@
   "description": "backend for the loantrack app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +16,8 @@
     "express-fileupload": "^1.4.0",
     "mongoose": "^6.4.3",
     "nodemon": "^2.0.19"
+  },
+  "engines": {
+    "node": "16.16.0"
   }
 }
