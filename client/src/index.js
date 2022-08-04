@@ -17,6 +17,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />}>
+          <Route index element={<ReportsComponent />}></Route>
           <Route path='new-client' element={<NewClientComponent />}></Route>
           <Route path='clients/:id' element={<ClientDetailComponent />}>
             <Route path='loans' element={<LoansComponent />}>
@@ -27,7 +28,7 @@ root.render(
             </Route>
             <Route path='new-loan' element={<NewLoan />}></Route>
           </Route>
-          <Route path='reports' element={<ReportsComponent />}></Route>
+
           <Route path='repayments' element={<RepaymentsComponent />}></Route>
         </Route>
       </Routes>
