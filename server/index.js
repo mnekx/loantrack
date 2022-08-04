@@ -8,6 +8,7 @@ const customerRoute = require('./routes/customers');
 const repaymentsRoute = require('./routes/repayments');
 const loansRoutes = require('./routes/loans');
 const bodyParser = require('body-parser');
+const path = require('path')
 
 const PORT = process.env.PORT || 3001;
 
@@ -39,7 +40,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
-mongoose.connect(process.env.DB_CONN, () => console.log('connected to DB!'));
+mongoose.connect("process.env.DB_CONN", () => console.log('connected to DB!'));
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
