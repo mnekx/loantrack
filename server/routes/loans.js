@@ -1,11 +1,10 @@
 const express = require('express');
 const Loan = require('../models/loans');
-const Repayment = require('../models/repayments')
+const Repayment = require('../models/repayments');
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  console.log('loans');
   try {
     const loans = await Loan.find();
     res.json(loans);
@@ -67,7 +66,7 @@ router.get('/:loanId/repayments', async (req, res) => {
     const loanRepayments = await Repayment.find({
       loanID: req.params.loanId,
     });
-    res.json(loanRepayments)
+    res.json(loanRepayments);
   } catch (error) {
     res.json({ message: error, data: null });
   }
