@@ -4,7 +4,7 @@
   "description": "backend for the loantrack app",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "nodemon server/index.js",
     "build": "cd client && npm install && npm run build"
   },
   "author": "",
