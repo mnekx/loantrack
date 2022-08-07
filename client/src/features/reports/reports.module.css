@@ -1,6 +1,11 @@
 .Section {
-    left: 0%;
-    top: 10%;
-    width: 100%;
-    text-align: center;
+  left: 0%;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+}
+
+.Table {
+  width: 65rem;
+  margin: 0 auto;
 }
